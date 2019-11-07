@@ -1,0 +1,70 @@
+> #Part 1: A radioactive object emits particles according to a Poisson process at an average rate of 7.5 particles per second. We observe the #object for a total of 5 seconds.
+> #a. (1 mark) What is the probability that no more than 25 particles will be emitted during this interval?
+> #b. (1 mark) What is the probability that exactly 30 particles will be emitted during this interval?
+> #c. (2 marks) Suppose it is known that at least 31 particles will be emitted during this interval, what is the probability that no more than     #34 particles will be emitted during this interval? 
+> 
+> #a)
+>  ppois(25,37.5)
+[1] 0.02008004
+> 
+> #b)
+> ppois(c(30,29),37.5)
+[1] 0.1243532 0.0919017
+> .1243532-0.0919017
+[1] 0.0324515
+> 
+> #c)
+>  ppois(c(34,31),37.5)
+[1] 0.3195456 0.1636091
+>  ppois(32,37.5,lower.tail=FALSE)
+[1] 0.790388
+> (0.3195456-0.1636091)/0.790388
+[1] 0.1972911
+> 
+> 
+> 
+> #Part 2: A manufacturer of ceramic blades estimates that 1.25% of all blades produced are too brittle to use. Suppose we take a random sample #of 400 blades and test them for brittleness.
+> #a. (1 mark) Find the exact probability that at least 4 blades will be too brittle to use.
+> #b. (1 mark) Use an appropriate approximation to find the approximate probability that at least 4 blades will be too brittle to use.
+> 
+> #a)
+>  pbinom(3,400,0.0125)
+[1] 0.2632609
+> 1-0.2632609
+[1] 0.7367391
+> 
+> #b)
+> ppois(3,5)
+[1] 0.2650259
+> 1-.2650259
+[1] 0.7349741
+> 
+> 
+> 
+> #Part 3: The fracture toughness (in 𝑀𝑃𝑎√𝑚) of a particular steel alloy is known to be normally distributed with a mean of 28.3 and a #standard deviation of 0.77. We select one sample of this alloy at random and measure its fracture toughness.
+> #a. (1 mark) What is the probability that the fracture toughness will be between 27.8 and 30.7?
+> #b. (1 mark) What is the probability that the fracture toughness will be at least 29.5?
+> #c. (2 marks) Given that the fracture toughness is at least 29, what is the probability that the fracture toughness will be no more than 30.5? 
+> 
+> #a)
+> pnorm(c(30.7,27.8),28.3,0.77)
+[1] 0.9990861 0.2580559
+> 0.9990861-0.2580559
+[1] 0.7410302
+> 
+> #b)
+>  pnorm(29.5,28.3,0.77)
+[1] 0.9404357
+> 1-0.9404357
+[1] 0.0595643
+> 
+> #c)
+> pnorm(c(30.5,29),28.3,0.77)
+[1] 0.9978626 0.8183489
+>  0.9978626-0.8183489
+[1] 0.1795137
+> pnorm(29,28.3,0.77,lower.tail=FALSE)
+[1] 0.1816511
+> (0.1795137/0.1816511)
+[1] 0.9882335
+> 
